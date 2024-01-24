@@ -5,10 +5,7 @@ import dynamic from 'next/dynamic';
 
 import useDarkMode from 'use-dark-mode';
 
-const DarkModeToggle = dynamic(() => import('@/components/DarkModeToggle'), {
-  ssr: false,
-});
-const Link = dynamic(() => import('@/components/Link'), { ssr: false });
+const DarkModeToggle = dynamic(() => import('@/components/DarkModeToggle'));
 
 import {
   Button,
@@ -66,16 +63,9 @@ const Header = ({ resumeUrl }: THeaderProps) => {
                     </LinkText>
                   </Link> */}
 
-                  <Link external passHref href={resumeUrl}>
-                    <LinkText
-                      onClick={() => setIsNavOpen(false)}
-                      onKeyPress={e =>
-                        e.keyCode === 13 ? setIsNavOpen(false) : null
-                      }
-                    >
-                      Resume
-                    </LinkText>
-                  </Link>
+                  <LinkText href={resumeUrl} target="_blank">
+                    Resume
+                  </LinkText>
                 </Links>
 
                 <DarkModeToggle dm={dm} />

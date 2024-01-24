@@ -3,11 +3,13 @@ import { draftMode } from 'next/headers';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import dynamic from 'next/dynamic';
 
+import { Globalstylesheet } from '@/components/Globalstylesheet';
+import StyledComponentsRegistry from '@/lib/registry';
+
 import { request } from '@/lib/datocms';
 
 import '../../public/fonts/fonts.css';
 
-const CustomHead = dynamic(() => import('@/components/Head'), { ssr: false });
 const Header = dynamic(() => import('@/components/Header'), { ssr: false });
 
 import Providers from '@/components/Providers';
@@ -55,9 +57,7 @@ export default async function RootLayout({
   const {
     global: {
       resume: { url },
-      _seoMetaTags,
     },
-    _site,
   } = await request({
     query: GLOBAL_QUERY,
     variables: {},
@@ -67,16 +67,17 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>
-          <Analytics />
-          <SpeedInsights />
+        <StyledComponentsRegistry>
+          <Providers>
+            <Globalstylesheet />
+            <Analytics />
+            <SpeedInsights />
 
-          <CustomHead site={_site} seoMetaTags={_seoMetaTags} />
+            <Header resumeUrl={url} />
 
-          <Header resumeUrl={url} />
-
-          {children}
-        </Providers>
+            {children}
+          </Providers>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );

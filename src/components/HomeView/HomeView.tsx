@@ -4,17 +4,13 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import ReactMarkdown from 'react-markdown';
-import styled from 'styled-components';
 import useDarkMode from 'use-dark-mode';
 
-const PaddedView = dynamic(() => import('@/components/PaddedView'), {
-  ssr: false,
-});
-const FadeIn = dynamic(() => import('@/components/FadeIn'), { ssr: false });
-const SunMoon = dynamic(() => import('@/components/SunMoon'), { ssr: false });
+const PaddedView = dynamic(() => import('@/components/PaddedView'));
+const FadeIn = dynamic(() => import('@/components/FadeIn'));
+const SunMoon = dynamic(() => import('@/components/SunMoon'));
 
-import { Section } from './styles';
-
+import { ModelViewerWrapper, Section } from './styles';
 if (typeof window !== 'undefined') {
   import('@google/model-viewer');
 }
@@ -37,19 +33,6 @@ const variants = {
   },
 };
 
-const ModelViewerWrapper = styled.div<{ $isLoaded: boolean }>`
-  opacity: ${({ $isLoaded }) => ($isLoaded ? 1 : 0)};
-  transition: all 300ms ease;
-  pointer-events: none;
-  outline: none;
-  outline-color: transparent;
-
-  &:focus {
-    outline: none;
-    outline-color: transparent;
-  }
-`;
-
 type THomeViewProps = {
   intro: string;
 };
@@ -66,8 +49,6 @@ const HomeView = ({ intro }: THomeViewProps) => {
       set$isLoaded(true);
     }, 500);
   }, []);
-
-  if (!window.navigator) return null;
 
   return (
     <motion.main

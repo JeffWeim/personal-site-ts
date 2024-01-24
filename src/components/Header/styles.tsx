@@ -39,7 +39,7 @@ export const Links = styled.span`
   flex-direction: column;
 `;
 
-export const LinkText = styled.span`
+export const LinkText = styled.a`
   padding: 15px 0;
   display: block;
 
