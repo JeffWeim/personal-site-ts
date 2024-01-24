@@ -5,13 +5,14 @@ type TBaseProps = {
 };
 
 export const Base = styled.div<TBaseProps>`
-  margin: 0 auto;
+  margin: ${({ theme }) => theme.spacing.none} auto;
   max-width: ${({ $maxWidth }) => `${$maxWidth}px`};
-  padding: 10px 20px;
+  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
   width: 100%;
 
   @media screen and (min-width: ${({ theme }) => theme.screen.md}) {
-    padding: 50px 20px;
+    padding: ${({ theme }) => theme.spacing['5xl']}
+      ${({ theme }) => theme.spacing.lg};
     text-align: left;
   }
 `;

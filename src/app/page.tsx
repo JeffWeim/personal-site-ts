@@ -1,11 +1,9 @@
-import Head from 'next/head';
 import { draftMode } from 'next/headers';
-
-import dynamic from 'next/dynamic';
+import type { Metadata } from 'next';
 
 import { request } from '@/lib/datocms';
 
-const HomeView = dynamic(() => import('@/components/HomeView'), { ssr: false });
+import HomeView from '@/components/HomeView/HomeView';
 
 const HOMEPAGE_QUERY = `
   query {
@@ -15,15 +13,27 @@ const HOMEPAGE_QUERY = `
   }
 `;
 
+export const metadata: Metadata = {
+  icons: {
+    icon: 'favicon.ico',
+  },
+  title: 'Jeff Weimer | Frontend Engineer',
+  description:
+    'A Frontend engineer specializing in highly performant and beautiful UIs',
+  keywords:
+    'Frontend, engineer, react, typescript, web, mobile, software, nextjs, webpack, design system, TDD, testing, jest, cypress',
+};
+
 const Home = async () => {
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
+  const isDevelopment = process.env.NODE_ENV === 'development';
 
   const {
     homePage: { intro },
   } = await request({
     query: HOMEPAGE_QUERY,
     variables: {},
-    includeDrafts: isEnabled,
+    includeDrafts: isEnabled || isDevelopment,
   });
 
   return <HomeView intro={intro} />;

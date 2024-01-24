@@ -1,16 +1,21 @@
+import type { ReactNode } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { draftMode } from 'next/headers';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import dynamic from 'next/dynamic';
-
 import { request } from '@/lib/datocms';
 
+// import { useQuerySubscription } from 'react-datocms/use-query-subscription';
+
+import { Globalstylesheet } from '@/components/Globalstylesheet/Globalstylesheet';
+
+import Header from '@/components/Header/Header';
+import Palm from '@/components/Palm/Palm';
+import Providers from '@/components/Providers/Providers';
+import SunMoon from '@/components/SunMoon/SunMoon';
+
+import StyledComponentsRegistry from '@/lib/registry';
+
 import '../../public/fonts/fonts.css';
-
-const CustomHead = dynamic(() => import('@/components/Head'), { ssr: false });
-const Header = dynamic(() => import('@/components/Header'), { ssr: false });
-
-import Providers from '@/components/Providers';
 
 const GLOBAL_QUERY = `
   {
@@ -45,38 +50,49 @@ const GLOBAL_QUERY = `
   }
 `;
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const { isEnabled } = draftMode();
+type TRootLayoutProps = {
+  children: ReactNode;
+};
+
+export default async function RootLayout({ children }: TRootLayoutProps) {
+  const { isEnabled } = await draftMode();
 
   const {
     global: {
       resume: { url },
-      _seoMetaTags,
     },
-    _site,
   } = await request({
     query: GLOBAL_QUERY,
     variables: {},
     includeDrafts: isEnabled,
   });
 
+  // dato's api is not working. opened an issue on their github
+  // const { status, error, data } = useQuerySubscription({
+  //   query: GLOBAL_QUERY,
+  //   token: process.env.NEXT_DATOCMS_API_TOKEN!,
+  //   preview: true,
+  //   enabled: true,
+  // });
+
   return (
     <html lang="en">
       <body>
-        <Providers>
-          <Analytics />
-          <SpeedInsights />
+        <StyledComponentsRegistry>
+          <Providers>
+            <Globalstylesheet />
+            <Analytics />
+            <SpeedInsights />
 
-          <CustomHead site={_site} seoMetaTags={_seoMetaTags} />
+            <Header resumeUrl={url} />
 
-          <Header resumeUrl={url} />
+            <SunMoon />
 
-          {children}
-        </Providers>
+            {children}
+
+            <Palm />
+          </Providers>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );

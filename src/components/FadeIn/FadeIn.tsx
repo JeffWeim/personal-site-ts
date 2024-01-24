@@ -5,13 +5,13 @@ import React, { useState, useEffect } from 'react';
 
 type TFadeInProps = {
   children: ReactNode;
-  delay?: number;
+  $delay?: number;
   reset?: Boolean;
 };
 
 import { Container } from './styles';
 
-const FadeIn = ({ children, delay = 0, reset = false }: TFadeInProps) => {
+const FadeIn = ({ children, $delay = 0, reset = false }: TFadeInProps) => {
   const intersectionRef = React.useRef(null);
   const intersection = useIntersection(intersectionRef, {
     root: null,
@@ -38,7 +38,7 @@ const FadeIn = ({ children, delay = 0, reset = false }: TFadeInProps) => {
   }, [intersection?.intersectionRatio, reset]);
 
   return (
-    <Container ref={intersectionRef} $inView={$inView} delay={delay}>
+    <Container ref={intersectionRef} $inView={$inView} $delay={$delay}>
       {children}
     </Container>
   );

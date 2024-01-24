@@ -21,9 +21,13 @@ const LinkElement = ({
   textDecoration = false,
 }: TLinkElementProps) => {
   return (
-    <Link href={href || ''} passHref={passHref}>
+    <Link
+      href={href || ''}
+      passHref={passHref}
+      target={external ? '_blank' : undefined}
+    >
       <AnchorElement
-        target={external ? '_blank' : null}
+        target={external ? '_blank' : undefined}
         $textDecoration={textDecoration}
       >
         {children}

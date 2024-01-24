@@ -45,7 +45,7 @@ export const Label = styled.label`
 
 export const Checkbox = styled.input`
   height: 0;
-  margin: 0;
+  margin: ${({ theme }) => theme.spacing.none};
   visibility: hidden;
   width: 0;
 `;

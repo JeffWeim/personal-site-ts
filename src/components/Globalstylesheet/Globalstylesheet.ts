@@ -1,3 +1,5 @@
+'use client';
+
 import { createGlobalStyle } from 'styled-components';
 
 export const Globalstylesheet = createGlobalStyle`
@@ -10,9 +12,8 @@ export const Globalstylesheet = createGlobalStyle`
     color: ${({ theme }) => theme.text.primary};
     fill: ${({ theme }) => theme.text.primary};
     font-family: 'raleway-regular', sans-serif;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+    margin: ${({ theme }) => theme.spacing.none};
+    padding: ${({ theme }) => theme.spacing.none};
     width: 100%;
     font-size: 15px;
     line-height: 1.5;
@@ -23,12 +24,15 @@ export const Globalstylesheet = createGlobalStyle`
   }
 
   ul {
-    padding: 0;
-    padding-left: 20px;
+    padding: ${({ theme }) => theme.spacing.none};
+  }
+
+  li {
+    list-style-type: none;
   }
 
   button {
-    padding: 0;
+    padding: ${({ theme }) => theme.spacing.none};
   }
 
   p {
@@ -43,16 +47,16 @@ export const Globalstylesheet = createGlobalStyle`
       font-size: ${({ theme }) => theme.fontSizes[7]};
     }
 
-    a[href*="sureapp"] {
-      background-color: #1c53e7;
-      background-image: linear-gradient(45deg, #ffffff, #1c53e7);
+    a[href*="calendly"] {
+      background-color: #2fbca5;
+      background-image: linear-gradient(45deg, #ffffff, #2fbca5);
       background-size: 100%;
       background-repeat: repeat;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
 
       .light-mode & {
-        background-image: linear-gradient(45deg, #dfdfdf, #1c53e7);
+        background-image: linear-gradient(45deg, #dfdfdf, #2fbca5);
 
       }
     }
@@ -89,7 +93,7 @@ export const Globalstylesheet = createGlobalStyle`
 
   &:focus {
     outline-style: dashed;
-    outline-color: ${({ theme }) => theme.focus};
+    outline-color: ${({ theme }) => theme.colors.focus};
     outline-width: 1px;
   }
 
