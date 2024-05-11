@@ -23,7 +23,7 @@ const variants = {
     opacity: 1,
     transition: {
       duration: 0.4,
-      delay: 0.5,
+      $delay: 0.5,
       when: 'beforeChildren',
     },
   },
@@ -62,7 +62,7 @@ const HomeView = ({ intro }: THomeViewProps) => {
 
       <PaddedView>
         <Section>
-          <FadeIn delay={300}>
+          <FadeIn $delay={300}>
             <ReactMarkdown
               components={{
                 a(props) {
@@ -78,6 +78,7 @@ const HomeView = ({ intro }: THomeViewProps) => {
       </PaddedView>
 
       <ModelViewerWrapper $isLoaded={$isLoaded}>
+        {/* missing global types for model-viewer */}
         {/* @ts-ignore */}
         <model-viewer
           tabIndex="-1"

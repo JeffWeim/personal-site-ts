@@ -28,13 +28,14 @@ export const metadata: Metadata = {
 
 const Home = async () => {
   const { isEnabled } = draftMode();
+  const isDevelopment = process.env.NODE_ENV === 'development';
 
   const {
     homePage: { intro },
   } = await request({
     query: HOMEPAGE_QUERY,
     variables: {},
-    includeDrafts: isEnabled,
+    includeDrafts: isEnabled || isDevelopment,
   });
 
   return <HomeView intro={intro} />;

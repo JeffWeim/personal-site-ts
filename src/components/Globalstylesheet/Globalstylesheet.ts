@@ -1,4 +1,5 @@
 'use client';
+
 import { createGlobalStyle } from 'styled-components';
 
 export const Globalstylesheet = createGlobalStyle`
@@ -11,7 +12,6 @@ export const Globalstylesheet = createGlobalStyle`
     color: ${({ theme }) => theme.text.primary};
     fill: ${({ theme }) => theme.text.primary};
     font-family: 'raleway-regular', sans-serif;
-    height: 100%;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -25,7 +25,10 @@ export const Globalstylesheet = createGlobalStyle`
 
   ul {
     padding: 0;
-    padding-left: 20px;
+  }
+
+  li {
+    list-style-type: none;
   }
 
   button {

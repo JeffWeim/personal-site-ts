@@ -7,7 +7,7 @@ type TPaddedViewProps = {
   $maxWidth?: number;
 };
 
-const PaddedView = ({ children, $maxWidth = 1400 }: TPaddedViewProps) => {
+const PaddedView = ({ children, $maxWidth = 1200 }: TPaddedViewProps) => {
   return <Base $maxWidth={$maxWidth}>{children}</Base>;
 };
 

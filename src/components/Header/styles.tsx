@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 
 export const Button = styled.button`
   -webkit-appearance: none;
-  border: none;
   background: none;
+  border: none;
   cursor: pointer;
   font-size: ${({ theme }) => theme.fontSizes[6]};
   position: relative;
@@ -14,10 +14,10 @@ export const Button = styled.button`
 export const ClickToClose = styled(motion.div)`
   background-color: #000;
   cursor: pointer;
-  height: 100%;
+  height: calc(100% + 15px);
   left: 0;
   position: fixed;
-  top: 0;
+  top: -15px;
   width: 100%;
   z-index: 5;
 `;
@@ -32,6 +32,24 @@ export const HeaderElement = styled.header`
   top: 0;
   transition: all 300ms ease-in;
   z-index: 99;
+
+  &:after {
+    content: '';
+    filter: blur(20px);
+    -webkit-filter: blur(20px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 72.5px;
+    background: #3b3b3ba6;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.screen.md}) {
+    &:after {
+      content: none;
+    }
+  }
 `;
 
 export const Links = styled.span`
@@ -40,8 +58,8 @@ export const Links = styled.span`
 `;
 
 export const LinkText = styled.a`
-  padding: 15px 0;
   display: block;
+  padding: 15px 0;
 
   @media screen and (min-width: ${({ theme }) => theme.screen.md}) {
     padding: 10px 0;
@@ -57,14 +75,14 @@ export const Nav = styled(motion.nav)`
   right: 0;
   top: 0;
   width: 100%;
-  z-index: 11;
+  z-index: 100;
 `;
 
 export const NavInner = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 80px 20px 20px;
   justify-content: space-between;
   max-height: 100vh;
+  padding: 80px 20px 20px;
 `;

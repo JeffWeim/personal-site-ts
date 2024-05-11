@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { draftMode } from 'next/headers';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import dynamic from 'next/dynamic';
+// import { useQuerySubscription } from 'react-datocms/use-query-subscription';
 
 import { Globalstylesheet } from '@/components/Globalstylesheet';
 import StyledComponentsRegistry from '@/lib/registry';
@@ -63,6 +64,15 @@ export default async function RootLayout({
     variables: {},
     includeDrafts: isEnabled,
   });
+
+  // const { status, error, data } = useQuerySubscription({
+  //   query: GLOBAL_QUERY,
+  //   token: process.env.NEXT_DATOCMS_API_TOKEN!,
+  //   preview: true,
+  //   enabled: true,
+  // });
+
+  // console.log(data);
 
   return (
     <html lang="en">

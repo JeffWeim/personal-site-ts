@@ -6,6 +6,7 @@ const light = {
     inset: '#e2e4e8',
     input: 'rgba(65,67,78,0.12)',
     header: 'rgb(0 150 136 / 0.1)',
+    green: '#6ec5b6',
   },
   text: {
     primary: '#050505',
@@ -25,6 +26,7 @@ const dark = {
     inset: '#111111',
     input: 'rgba(191,193,201,0.12)',
     header: 'rgb(65 65 65 / 20%)',
+    green: '#6ec5b6',
   },
   text: {
     primary: '#fbfbfc',

@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import useDarkMode from 'use-dark-mode';
 
@@ -23,13 +25,14 @@ type THeaderProps = {
 
 const Header = ({ resumeUrl }: THeaderProps) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const router = useRouter();
 
   const dm = useDarkMode(true);
 
   return (
     <>
       <HeaderElement>
-        <Button onClick={() => (window.location.href = '/')}>
+        <Button onClick={() => router.push('/')}>
           {dm.value ? '🙂' : '😎'}
         </Button>{' '}
         <Button type="button" onClick={() => setIsNavOpen(!isNavOpen)}>
@@ -54,14 +57,16 @@ const Header = ({ resumeUrl }: THeaderProps) => {
             >
               <NavInner>
                 <Links>
-                  {/* <Link href='/about'>
+                  <Link href="/portfolio">
                     <LinkText
                       onClick={() => setIsNavOpen(false)}
-                      onKeyPress={e => (e.keyCode === 13 ? setIsNavOpen(false) : null)}
+                      onKeyPress={e =>
+                        e.keyCode === 13 ? setIsNavOpen(false) : null
+                      }
                     >
-                      About
+                      Portfolio
                     </LinkText>
-                  </Link> */}
+                  </Link>
 
                   <LinkText href={resumeUrl} target="_blank">
                     Resume
