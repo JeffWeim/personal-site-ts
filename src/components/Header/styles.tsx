@@ -27,7 +27,7 @@ export const HeaderElement = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
   position: sticky;
   top: 0;
   transition: all 300ms ease-in;
@@ -59,10 +59,12 @@ export const Links = styled.span`
 
 export const LinkText = styled.a`
   display: block;
-  padding: 15px 0;
+  padding: ${({ theme }) => theme.spacing.md}
+    ${({ theme }) => theme.spacing.none};
 
   @media screen and (min-width: ${({ theme }) => theme.screen.md}) {
-    padding: 10px 0;
+    padding: ${({ theme }) => theme.spacing.sm}
+      ${({ theme }) => theme.spacing.none};
   }
 `;
 
@@ -84,5 +86,6 @@ export const NavInner = styled.div`
   height: 100%;
   justify-content: space-between;
   max-height: 100vh;
-  padding: 80px 20px 20px;
+  padding: ${({ theme }) => theme.spacing['8xl']}
+    ${({ theme }) => theme.spacing.lg} ${({ theme }) => theme.spacing.lg};
 `;

@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef } from 'react';
-import Head from 'next/head';
+
 import ReactMarkdown from 'react-markdown';
 
 import FadeIn from '@/components/FadeIn';
@@ -21,10 +21,6 @@ const PortfolioView = ({ portfolioPage }: TPortfolioViewProps) => {
 
   return (
     <Container>
-      <Head>
-        <title>Jeff Weimer | Portfolio</title>
-      </Head>
-
       <PaddedView>
         <Intro>
           <FadeIn $delay={200}>

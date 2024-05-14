@@ -12,8 +12,8 @@ export const Globalstylesheet = createGlobalStyle`
     color: ${({ theme }) => theme.text.primary};
     fill: ${({ theme }) => theme.text.primary};
     font-family: 'raleway-regular', sans-serif;
-    margin: 0;
-    padding: 0;
+    margin: ${({ theme }) => theme.spacing.none};
+    padding: ${({ theme }) => theme.spacing.none};
     width: 100%;
     font-size: 15px;
     line-height: 1.5;
@@ -24,7 +24,7 @@ export const Globalstylesheet = createGlobalStyle`
   }
 
   ul {
-    padding: 0;
+    padding: ${({ theme }) => theme.spacing.none};
   }
 
   li {
@@ -32,7 +32,7 @@ export const Globalstylesheet = createGlobalStyle`
   }
 
   button {
-    padding: 0;
+    padding: ${({ theme }) => theme.spacing.none};
   }
 
   p {
@@ -93,7 +93,7 @@ export const Globalstylesheet = createGlobalStyle`
 
   &:focus {
     outline-style: dashed;
-    outline-color: ${({ theme }) => theme.focus};
+    outline-color: ${({ theme }) => theme.colors.focus};
     outline-width: 1px;
   }
 

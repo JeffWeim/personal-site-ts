@@ -24,7 +24,7 @@ export const DownArrow = styled.button<TDownArrow>`
   background: none;
   border: none;
   cursor: pointer;
-  margin: 20px 0 0;
+  margin-top: ${({ theme }) => theme.spacing.lg};
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
   pointer-events: ${({ $isVisible }) => ($isVisible ? 'auto' : 'none')};
   transition: all 300ms ease-in-out;
@@ -42,11 +42,11 @@ export const DownIcon = styled.svg`
 export const Image = styled.img`
   border-radius: 50%;
   display: flex;
-  margin: 0 auto;
+  margin: ${({ theme }) => theme.spacing.none} auto;
 
   @media screen and (min-width: ${({ theme }) => theme.screen.md}) {
     display: block;
-    margin: 0;
+    margin: ${({ theme }) => theme.spacing.none};
   }
 `;
 
@@ -61,10 +61,10 @@ export const Intro = styled.section`
 `;
 
 export const ProjectsTitle = styled.h1`
-  margin: 0 0 50px;
+  margin-bottom: ${({ theme }) => theme.spacing['5xl']};
 
   @media screen and (min-width: ${({ theme }) => theme.screen.md}) {
-    margin: 0 0 100px;
+    margin-bottom: 100px;
   }
 `;
 

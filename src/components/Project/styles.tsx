@@ -4,24 +4,24 @@ export const Container = styled.div`
   border-top: 3px solid ${({ theme }) => theme.text.secondary};
   display: flex;
   flex-direction: column;
-  margin: 0 0 60px;
-  padding: 10px 0 0;
+  margin-bottom: ${({ theme }) => theme.spacing['6xl']};
+  padding-top: ${({ theme }) => theme.spacing.sm};
 
   @media screen and (min-width: ${({ theme }) => theme.screen.md}) {
     flex-direction: row;
     height: 80vh;
     justify-content: space-between;
-    margin: 0 0 60px;
+    margin-bottom: ${({ theme }) => theme.spacing['6xl']};
     min-height: 400px;
-    padding: 60px 0 0;
+    padding-top: ${({ theme }) => theme.spacing['6xl']};
   }
 `;
 
 export const Description = styled.div`
-  margin: 0 0 10px;
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
 
   @media screen and (min-width: ${({ theme }) => theme.screen.md}) {
-    margin: 0 0 20px;
+    margin-bottom: ${({ theme }) => theme.spacing.lg};
   }
 `;
 
@@ -36,33 +36,34 @@ export const TextContainer = styled.div`
   flex-direction: column;
   flex: 1 0 auto;
   justify-content: center;
-  margin: 50px 0 20px;
+  margin: ${({ theme }) => theme.spacing['5xl']}
+    ${({ theme }) => theme.spacing.none} ${({ theme }) => theme.spacing.lg};
   max-width: 100%;
 
   @media screen and (min-width: ${({ theme }) => theme.screen.md}) {
     flex-basis: 45%;
     max-width: 50%;
-    padding-right: 30px;
+    padding-right: ${({ theme }) => theme.spacing['2xl']};
   }
 
   h2 {
-    margin-top: 0;
+    margin-top: ${({ theme }) => theme.spacing.none};
   }
 
   [data-container='1'] & {
-    margin-top: 0;
+    margin-top: ${({ theme }) => theme.spacing.none};
   }
 `;
 
 export const ImageContainer = styled.div`
   flex-basis: 50%;
-  padding: 0;
+  padding: ${({ theme }) => theme.spacing.none};
 
   @media screen and (min-width: ${({ theme }) => theme.screen.md}) {
     align-items: center;
     border-left: 3px solid ${({ theme }) => theme.text.secondary};
     display: flex;
-    padding: 0 0 0 40px;
+    padding-left: ${({ theme }) => theme.spacing['4xl']};
     flex-basis: 55%;
   }
 `;
@@ -70,8 +71,9 @@ export const ImageContainer = styled.div`
 export const ProjectNumber = styled.p`
   display: flex;
   line-height: 1;
-  margin: 10px 0 10px;
-  padding-left: 25px;
+  margin: ${({ theme }) => theme.spacing.sm}
+    ${({ theme }) => theme.spacing.none} ${({ theme }) => theme.spacing.sm};
+  padding-left: ${({ theme }) => theme.spacing.xl};
   position: relative;
 
   &:before {

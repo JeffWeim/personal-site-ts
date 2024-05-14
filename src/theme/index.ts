@@ -72,7 +72,24 @@ const defaultTheme = {
     heading: 1.3,
     code: 1.6,
   },
-  focus: 'rebeccapurple',
+  colors: {
+    focus: 'rebeccapurple',
+  },
+  spacing: {
+    none: '0',
+    xs: '5px',
+    sm: '10px',
+    md: '15px',
+    lg: '20px',
+    xl: '25px',
+    '2xl': '30px',
+    '3xl': '35px',
+    '4xl': '40px',
+    '5xl': '50px',
+    '6xl': '60px',
+    '7xl': '70px',
+    '8xl': '80px',
+  },
 };
 
 export const lightTheme = { ...defaultTheme, ...light };
