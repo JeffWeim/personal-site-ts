@@ -11,23 +11,16 @@ const SunMoon = ({ dm }: TSunMoonProps) => {
   const [$moonActive, set$moonActive] = useState(false);
   const [$sunActive, set$sunActive] = useState(false);
 
-  const isFirstRun = useRef(true);
-
   useEffect(() => {
-    if (!isFirstRun.current) {
-      setTimeout(() => {
-        if (dm.value) {
-          set$moonActive(true);
-          set$sunActive(false);
-        } else {
-          set$sunActive(true);
-          set$moonActive(false);
-        }
-      }, 500);
-    } else {
-      isFirstRun.current = false;
-      return undefined;
-    }
+    setTimeout(() => {
+      if (dm.value) {
+        set$moonActive(true);
+        set$sunActive(false);
+      } else {
+        set$sunActive(true);
+        set$moonActive(false);
+      }
+    }, 500);
 
     return undefined;
   }, [dm.value]);

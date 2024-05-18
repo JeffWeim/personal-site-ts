@@ -11,6 +11,7 @@ const FadeIn = dynamic(() => import('@/components/FadeIn'));
 const SunMoon = dynamic(() => import('@/components/SunMoon'));
 
 import { ModelViewerWrapper, Section } from './styles';
+
 if (typeof window !== 'undefined') {
   import('@google/model-viewer');
 }
@@ -78,10 +79,9 @@ const HomeView = ({ intro }: THomeViewProps) => {
       </PaddedView>
 
       <ModelViewerWrapper $isLoaded={$isLoaded}>
-        {/* missing global types for model-viewer */}
-        {/* @ts-ignore */}
+        {/* TODO - add global types for model-viewer */}
         <model-viewer
-          tabIndex="-1"
+          tabIndex={1}
           loading="lazy"
           src="/tree_palmDetailedShort.glb"
           shadow-intensity="0.5"
@@ -91,7 +91,8 @@ const HomeView = ({ intro }: THomeViewProps) => {
           field-of-view="45deg"
           exposure={dm.value ? '.25' : '0.55'}
           camera-target="0m 1.25m 0m"
-          auto-rotate=""
+          auto-rotate={true}
+          auto-rotate-delay="001"
           style={{
             position: 'fixed',
             bottom: '0',
