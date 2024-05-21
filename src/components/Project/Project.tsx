@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import FadeIn from '@/components/FadeIn';
-import Link from '@/components/Link';
+import FadeIn from '@/components/FadeIn/FadeIn';
+import Link from '@/components/Link/Link';
 
 import {
   Container,

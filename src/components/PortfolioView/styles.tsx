@@ -51,12 +51,14 @@ export const Image = styled.img`
 `;
 
 export const Intro = styled.section`
+  align-items: center;
+  border-bottom: 3px solid ${({ theme }) => theme.text.secondary};
+  display: flex;
+  min-height: 85vh;
   position: relative;
-  height: 75vh;
 
   @media screen and (min-width: ${({ theme }) => theme.screen.md}) {
-    min-height: calc(100vh - 125px);
-    height: auto;
+    height: calc(100vh - 200px);
   }
 `;
 
@@ -70,6 +72,6 @@ export const ProjectsTitle = styled.h1`
 
 export const Container = styled.div`
   [data-container='1'] {
-    border-top: 3px solid ${({ theme }) => theme.text.secondary};
+    border-top: none;
   }
 `;

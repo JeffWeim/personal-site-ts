@@ -1,15 +1,14 @@
+'use client';
 import React, { useState, useEffect, useRef } from 'react';
-import type { DarkMode } from 'use-dark-mode';
+import useDarkMode from 'use-dark-mode';
 
 import { Sun, Moon } from './styles';
 
-type TSunMoonProps = {
-  dm: DarkMode;
-};
-
-const SunMoon = ({ dm }: TSunMoonProps) => {
+const SunMoon = () => {
   const [$moonActive, set$moonActive] = useState(false);
   const [$sunActive, set$sunActive] = useState(false);
+
+  const dm = useDarkMode(true);
 
   useEffect(() => {
     setTimeout(() => {

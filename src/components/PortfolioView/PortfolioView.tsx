@@ -3,11 +3,11 @@ import React, { useRef } from 'react';
 
 import ReactMarkdown from 'react-markdown';
 
-import FadeIn from '@/components/FadeIn';
-import PaddedView from '@/components/PaddedView';
-import Project from '@/components/Project';
+import FadeIn from '@/components/FadeIn/FadeIn';
+import PaddedView from '@/components/PaddedView/PaddedView';
+import Project from '@/components/Project/Project';
 
-import type { TProjectProps } from '@/components/Project';
+import type { TProjectProps } from '@/components/Project/Project';
 
 import { Container, Intro } from './styles';
 
@@ -26,12 +26,6 @@ const PortfolioView = ({ portfolioPage }: TPortfolioViewProps) => {
           <FadeIn $delay={200}>
             <ReactMarkdown>{text}</ReactMarkdown>
           </FadeIn>
-
-          {skills && (
-            <FadeIn $delay={400}>
-              <ReactMarkdown>{skills}</ReactMarkdown>
-            </FadeIn>
-          )}
         </Intro>
 
         {projects && (

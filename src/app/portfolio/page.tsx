@@ -1,7 +1,7 @@
 import { draftMode } from 'next/headers';
 import type { Metadata } from 'next';
 
-import PortfolioView from '@/components/PortfolioView';
+import PortfolioView from '@/components/PortfolioView/PortfolioView';
 import { request } from '@/lib/datocms';
 
 const PORTFOLIO_QUERY = `

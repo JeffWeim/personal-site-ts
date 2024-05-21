@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 
 import useDarkMode from 'use-dark-mode';
 
-const DarkModeToggle = dynamic(() => import('@/components/DarkModeToggle'));
+import DarkModeToggle from '@/components/DarkModeToggle/DarkModeToggle';
 
 import {
   Button,

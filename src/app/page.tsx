@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 
 import { request } from '@/lib/datocms';
 
-const HomeView = dynamic(() => import('@/components/HomeView'));
+import HomeView from '@/components/HomeView/HomeView';
 
 const HOMEPAGE_QUERY = `
   query {
