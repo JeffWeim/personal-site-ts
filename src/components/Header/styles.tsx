@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
+type TLinksProps = {
+  direction?: 'column' | 'row';
+  padding?: string;
+};
+
 export const Button = styled.button`
   -webkit-appearance: none;
   background: none;
@@ -52,9 +57,10 @@ export const HeaderElement = styled.header`
   }
 `;
 
-export const Links = styled.span`
+export const Links = styled.span<TLinksProps>`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${({ direction = 'column' }) => direction};
+  padding: ${({ padding = '0' }) => padding};
 `;
 
 export const LinkText = styled.a`

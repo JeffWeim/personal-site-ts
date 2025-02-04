@@ -47,16 +47,16 @@ export const Globalstylesheet = createGlobalStyle`
       font-size: ${({ theme }) => theme.fontSizes[7]};
     }
 
-    a[href*="sureapp"] {
-      background-color: #1c53e7;
-      background-image: linear-gradient(45deg, #ffffff, #1c53e7);
+    a[href*="calendly"] {
+      background-color: #2fbca5;
+      background-image: linear-gradient(45deg, #ffffff, #2fbca5);
       background-size: 100%;
       background-repeat: repeat;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
 
       .light-mode & {
-        background-image: linear-gradient(45deg, #dfdfdf, #1c53e7);
+        background-image: linear-gradient(45deg, #dfdfdf, #2fbca5);
 
       }
     }
