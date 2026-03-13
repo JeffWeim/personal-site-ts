@@ -1,9 +1,19 @@
 'use client';
+
 import useDarkMode from 'use-dark-mode';
 import { ModelViewerWrapper } from './styles';
+import { useEffect } from 'react';
 
 const Palm = () => {
   const dm = useDarkMode(true);
+
+  useEffect(() => {
+    // Load model-viewer only on client side
+    if (typeof window !== 'undefined') {
+      // @ts-ignore - model-viewer script has no type declarations
+      import('@google/model-viewer/dist/model-viewer.min.js');
+    }
+  }, []);
 
   return (
     <ModelViewerWrapper>

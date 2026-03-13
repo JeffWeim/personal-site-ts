@@ -1,40 +1,45 @@
 'use client';
 import type { ReactNode } from 'react';
-import { useIntersection } from 'react-use';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 type TFadeInProps = {
   children: ReactNode;
   $delay?: number;
-  reset?: Boolean;
+  reset?: boolean;
 };
 
 import { Container } from './styles';
 
-const FadeIn = ({ children, $delay = 0, reset = false }: TFadeInProps) => {
-  const intersectionRef = React.useRef(null);
-  const intersection = useIntersection(intersectionRef, {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.25,
-  });
-
-  const [$inView, set$inView] = useState(false);
+function useClientIntersection(ref: React.RefObject<HTMLElement>, threshold?: number) {
+  const [intersection, setIntersection] = useState<{ intersectionRatio?: number } | null>(null);
 
   useEffect(() => {
-    const $inViewNow =
-      (intersection?.intersectionRatio &&
-        intersection.intersectionRatio > 0.25) ||
-      false;
+    // Only run on client
+    if (typeof window === 'undefined') return;
+    const element = ref.current;
+    if (!element) return;
 
-    if ($inViewNow) {
-      return set$inView($inViewNow);
-    }
-    if (reset) {
-      return set$inView(false);
-    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIntersection({ intersectionRatio: entry.intersectionRatio });
+      },
+      { threshold }
+    );
 
-    return undefined;
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [ref, threshold]);
+
+  return intersection;
+}
+
+const FadeIn = ({ children, $delay = 0, reset = false }: TFadeInProps) => {
+  const intersectionRef = React.useRef<HTMLDivElement>(null);
+  const intersection = useClientIntersection(intersectionRef as React.RefObject<HTMLElement>, 0.25);
+
+  const $inView = useMemo(() => {
+    if (reset) return false;
+    return !!(intersection?.intersectionRatio && intersection.intersectionRatio > 0.25);
   }, [intersection?.intersectionRatio, reset]);
 
   return (

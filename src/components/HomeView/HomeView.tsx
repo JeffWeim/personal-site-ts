@@ -1,18 +1,12 @@
 'use client';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import dynamic from 'next/dynamic';
 import ReactMarkdown from 'react-markdown';
-import useDarkMode from 'use-dark-mode';
 
 import PaddedView from '@/components/PaddedView/PaddedView';
 import FadeIn from '@/components/FadeIn/FadeIn';
 
 import { Section } from './styles';
-
-if (typeof window !== 'undefined') {
-  import('@google/model-viewer');
-}
 
 const variants = {
   initial: {
@@ -38,8 +32,6 @@ type THomeViewProps = {
 
 const HomeView = ({ intro }: THomeViewProps) => {
   const pathname = usePathname();
-
-  const dm = useDarkMode(true);
 
   // const [$isLoaded, set$isLoaded] = useState(false);
 

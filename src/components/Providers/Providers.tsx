@@ -1,7 +1,6 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { useEffect, useState } from 'react';
 import useDarkMode from 'use-dark-mode';
 import { ThemeProvider } from 'styled-components';
 
@@ -14,11 +13,7 @@ type TProviderProps = {
 const Providers = ({ children }: TProviderProps) => {
   const dm = useDarkMode(true);
 
-  const [theme, setTheme] = useState(dm.value ? darkTheme : lightTheme);
-
-  useEffect(() => {
-    setTheme(dm.value ? darkTheme : lightTheme);
-  }, [dm.value]);
+  const theme = dm.value ? darkTheme : lightTheme;
 
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
