@@ -1,4 +1,3 @@
-import React from 'react';
 import type { DarkMode } from 'use-dark-mode';
 
 import Toggle from '@/components/Toggle/Toggle';

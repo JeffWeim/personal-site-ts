@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 import useDarkMode from 'use-dark-mode';
 import { ThemeProvider } from 'styled-components';
 
+import { DarkModeProvider } from '@/context/DarkModeContext';
 import { darkTheme, lightTheme } from '@/theme';
 
 type TProviderProps = {
@@ -15,7 +16,11 @@ const Providers = ({ children }: TProviderProps) => {
 
   const theme = dm.value ? darkTheme : lightTheme;
 
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return (
+    <DarkModeProvider value={dm}>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    </DarkModeProvider>
+  );
 };
 
 export default Providers;

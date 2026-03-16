@@ -63,7 +63,7 @@ export const Links = styled.span<TLinksProps>`
   padding: ${({ padding = '0' }) => padding};
 `;
 
-export const LinkText = styled.a`
+export const LinkText = styled.span`
   display: block;
   padding: ${({ theme }) => theme.spacing.md}
     ${({ theme }) => theme.spacing.none};

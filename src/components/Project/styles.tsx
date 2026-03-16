@@ -25,12 +25,6 @@ export const Description = styled.div`
   }
 `;
 
-export const Image = styled.img`
-  max-width: 100%;
-  object-fit: contain;
-  height: 100%;
-`;
-
 export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -56,15 +50,20 @@ export const TextContainer = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  flex-basis: 50%;
-  padding: ${({ theme }) => theme.spacing.none};
+  position: relative;
+  aspect-ratio: 605 / 350;
+  width: 100%;
+  flex-shrink: 0;
 
   @media screen and (min-width: ${({ theme }) => theme.screen.md}) {
     align-items: center;
     border-left: 3px solid ${({ theme }) => theme.text.secondary};
     display: flex;
-    padding-left: ${({ theme }) => theme.spacing['4xl']};
-    flex-basis: 55%;
+    width: calc(100% - 550px);
+
+    img {
+      padding-left: ${({ theme }) => theme.spacing['4xl']};
+    }
   }
 `;
 

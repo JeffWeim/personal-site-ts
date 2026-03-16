@@ -1,11 +1,14 @@
 'use client';
 
-import useDarkMode from 'use-dark-mode';
+import { useEffect, useRef } from 'react';
+
+import { useDarkModeContext } from '@/context/DarkModeContext';
+
 import { ModelViewerWrapper } from './styles';
-import { useEffect } from 'react';
 
 const Palm = () => {
-  const dm = useDarkMode(true);
+  const dm = useDarkModeContext();
+  const modelRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     // Load model-viewer only on client side
@@ -15,9 +18,16 @@ const Palm = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (modelRef.current) {
+      modelRef.current.setAttribute('exposure', dm.value ? '.25' : '0.55');
+    }
+  }, [dm.value]);
+
   return (
     <ModelViewerWrapper>
       <model-viewer
+        ref={modelRef}
         tabIndex={1}
         loading="lazy"
         src="/tree_palmDetailedShort.glb"

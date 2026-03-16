@@ -3,10 +3,45 @@ import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 
+// import { useQuerySubscription } from 'react-datocms/use-query-subscription';
+
 import PaddedView from '@/components/PaddedView/PaddedView';
 import FadeIn from '@/components/FadeIn/FadeIn';
 
 import { Section } from './styles';
+
+// const GLOBAL_QUERY = `
+//   {
+//     global {
+//       resume {
+//         url
+//       }
+//       _seoMetaTags {
+//         tag
+//         content
+//         attributes
+//       }
+//     }
+//     _site {
+//       globalSeo {
+//         fallbackSeo {
+//           description
+//           title
+//           image {
+//             url
+//           }
+//         }
+//         siteName
+//         titleSuffix
+//       }
+//       favicon: faviconMetaTags {
+//         attributes
+//         content
+//         tag
+//       }
+//     }
+//   }
+// `;
 
 const variants = {
   initial: {
@@ -32,14 +67,6 @@ type THomeViewProps = {
 
 const HomeView = ({ intro }: THomeViewProps) => {
   const pathname = usePathname();
-
-  // const [$isLoaded, set$isLoaded] = useState(false);
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     set$isLoaded(true);
-  //   }, 500);
-  // }, []);
 
   return (
     <motion.main

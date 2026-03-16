@@ -3,8 +3,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { draftMode } from 'next/headers';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { request } from '@/lib/datocms';
-
-// import { useQuerySubscription } from 'react-datocms/use-query-subscription';
+import { Raleway } from 'next/font/google';
 
 import { Globalstylesheet } from '@/components/Globalstylesheet/Globalstylesheet';
 
@@ -15,7 +14,25 @@ import SunMoon from '@/components/SunMoon/SunMoon';
 
 import StyledComponentsRegistry from '@/lib/registry';
 
-import '../../public/fonts/fonts.css';
+const raleway = Raleway({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--font-raleway',
+});
+
+export const metadata = {
+  links: [
+    {
+      rel: 'preconnect',
+      href: 'https://graphql.datocms.com',
+    },
+    {
+      rel: 'preconnect',
+      href: 'https://www.datocms-assets.com',
+    },
+  ],
+};
 
 const GLOBAL_QUERY = `
   {
@@ -67,16 +84,8 @@ export default async function RootLayout({ children }: TRootLayoutProps) {
     includeDrafts: isEnabled,
   });
 
-  // dato's api is not working. opened an issue on their github
-  // const { status, error, data } = useQuerySubscription({
-  //   query: GLOBAL_QUERY,
-  //   token: process.env.NEXT_DATOCMS_API_TOKEN!,
-  //   preview: true,
-  //   enabled: true,
-  // });
-
   return (
-    <html lang="en">
+    <html lang="en" className={raleway.variable}>
       <body>
         <StyledComponentsRegistry>
           <Providers>

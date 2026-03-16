@@ -2,7 +2,7 @@
 
 type TRequestParameters = {
   query: string;
-  variables?: any;
+  variables?: unknown;
   preview?: boolean;
   includeDrafts?: boolean;
   excludeInvalid?: boolean;

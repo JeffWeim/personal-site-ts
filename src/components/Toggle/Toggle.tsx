@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Button, Label, Checkbox } from './styles';
 
 type TToggleProps = {

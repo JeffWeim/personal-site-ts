@@ -19,6 +19,8 @@ const PORTFOLIO_QUERY = `
         name
         images {
           alt
+          width
+          height
           url(imgixParams: {auto: format, q: "80"})
         }
       }
@@ -46,8 +48,6 @@ const Portfolio = async () => {
     variables: {},
     includeDrafts: isEnabled || isDevelopment,
   });
-
-  debugger;
 
   return <PortfolioView portfolioPage={portfolioPage} />;
 };

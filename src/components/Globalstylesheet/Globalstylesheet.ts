@@ -11,7 +11,7 @@ export const Globalstylesheet = createGlobalStyle`
   body {
     color: ${({ theme }) => theme.text.primary};
     fill: ${({ theme }) => theme.text.primary};
-    font-family: 'raleway-regular', sans-serif;
+    font-family: var(--font-raleway), sans-serif;
     margin: ${({ theme }) => theme.spacing.none};
     padding: ${({ theme }) => theme.spacing.none};
     width: 100%;
@@ -42,6 +42,7 @@ export const Globalstylesheet = createGlobalStyle`
 
   h1 {
     font-size: ${({ theme }) => theme.fontSizes[5]};
+    font-weight: 500;
 
     @media screen and (min-width: ${({ theme }) => theme.screen.md}) {
       font-size: ${({ theme }) => theme.fontSizes[7]};
